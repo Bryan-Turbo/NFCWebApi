@@ -8,27 +8,27 @@ using NFCWebApi.Models;
 using NFCWebApi.Static;
 
 namespace NFCWebApi.Controllers {
-    [Route("[controller]")]
-    public class ApiController : Controller {
+    [Route("api/[controller]")]
+    public class TagsController : Controller {
 
-        [HttpGet]
+        [HttpGet("startup")]
         public string Get() {
             Global.FillTags();
             return "Welcome to the api";
         }
 
-        [HttpGet("tags")]
+        [HttpGet]
         public IEnumerable<Tag> GetTags() {
             return Global.Tags;
         }
 
-        [HttpGet("tags/{tagId}")]
+        [HttpGet("{tagId}")]
         public Tag GetTag(string tagId) {
             return this.GetSingleTag(tagId);
         }
 
         [HttpPost("register")]
-        public void PostTag([FromBody] ApiModel tagModel) {
+        public void PostTag([FromBody] TagsModel tagModel) {
             var tag = this.GetSingleTag(tagModel.SerialId.ToUpper());
             tag.ToggleOccupation();
             var allTags = Global.Tags;

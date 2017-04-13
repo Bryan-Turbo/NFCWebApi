@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NFCWebApi.Models
 {
-    public class ApiModel
+    public class TagsModel
     {
         [Required]
         public string SerialId { get; set; }
