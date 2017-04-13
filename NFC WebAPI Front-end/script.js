@@ -1,6 +1,6 @@
 var tags = null;
-var green = "#10e33e";
-var red =  "#e33e10";
+var green = "#10ff3e";
+var red =  "#ff3e10";
 
 var changeTables = function(){
     request();
