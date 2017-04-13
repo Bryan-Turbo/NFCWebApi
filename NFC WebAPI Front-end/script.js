@@ -3,35 +3,35 @@ var green = "#10e33e";
 var red =  "#e33e10";
 
 var changeTables = function(){
-    request(setvar);
+    request();
     if(tags != null){
-        for(i = 0; i < tags.length; i++){
-            var tag = tags[i];
-            if(tag['isOccupied']){
-                changeColor(green, i);
-            }else{
-                changeColor(red, i);
-            }
+        colorTables();
+    }
+}
+
+var colorTables = function(){
+    for(i = 0; i < tags.length; i++){
+        var tag = tags[i];
+        if(tag['isOccupied']){
+            changeColor(green, i);
+        }else{
+            changeColor(red, i);
         }
     }
 }
 
-function request(retvar){
+var request = function(){
     $.ajax({
         type:"GET", 
         url: "http://localhost:2700/api/tags/", 
         success: function(data) {
-            retvar(data);
+            tags = data;
         }, 
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(jqXHR.status);
         },
         dataType: 'json'
     });
-}
-
-var setvar = function(data){
-    tags = data;
 }
 
 var changeColor = function(color, index){
