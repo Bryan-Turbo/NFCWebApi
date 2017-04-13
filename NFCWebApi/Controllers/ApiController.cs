@@ -30,6 +30,11 @@ namespace NFCWebApi.Controllers {
         public void PostTag([FromBody] string tagId) {
             var tag = this.GetSingleTag(tagId.ToUpper());
             tag.ToggleOccupation();
+            var allTags = Global.Tags;
+            var othertags = allTags.Where(t => t.SerialId != tag.SerialId).ToArray();
+            foreach (Tag singleTag in othertags) {
+                singleTag.DeOccupy();
+            }
         }
 
         private Tag GetSingleTag(string tagId) {
