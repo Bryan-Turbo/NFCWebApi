@@ -7,7 +7,7 @@ namespace NFCWebApi.Static {
     public class Tag {
         public string SerialId { get; set; }
         //public string AssignedEmployee { get; set; }
-        public bool IsOccuppied { get; set; }
+        public bool IsOccupied { get; set; }
 
         //public Tag(string serialId, string employee, Position position) {
         //    this.SerialId = serialId;
@@ -16,15 +16,19 @@ namespace NFCWebApi.Static {
         //}
         public Tag(string serialId) {
             this.SerialId = serialId;
-            this.IsOccuppied = false;
+            this.IsOccupied = false;
         }
 
         public void ToggleOccupation() {
-            this.IsOccuppied = !this.IsOccuppied;
+            this.IsOccupied = !this.IsOccupied;
+        }
+
+        public void DeOccupy() {
+            this.IsOccupied = false;
         }
 
         public override string ToString() {
-            return $"{this.SerialId} is occupied: {this.IsOccuppied}";
+            return $"{this.SerialId} is occupied: {this.IsOccupied}";
             //return $"{this.AssignedEmployee} is checked in at {this.Position} with id {this.SerialId}";
         }
     }
