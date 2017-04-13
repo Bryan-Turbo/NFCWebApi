@@ -5,7 +5,6 @@ var red =  "#e33e10";
 var changeTables = function(){
     request(setvar);
     if(tags != null){
-        //console.log(tags[0]['isOccupied'])
         for(i = 0; i < tags.length; i++){
             var tag = tags[i];
             if(tag['isOccupied']){
