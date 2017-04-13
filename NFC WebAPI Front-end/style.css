@@ -3,21 +3,22 @@
     padding: 0px;
 }
 
-.container{
-    border: 2px solid #565656;
-    padding: 30px;
-    margin: 0;
-    /*display: inline-block;*/
-    position: absolute;
+#container{
+    border: 3px solid #565656;
+    padding: 20px;
     left: 50%;
-    top : 50%;
+    top: 50%;
+    position: absolute;
     transform: translate(-50%, -50%);
 }
 
+.block_container{
+    display: flex;
+}
+
 .block{
-    width: 125px;
-    height: 75px;;
-    background-color: #10e33e;
+    width: 135px;
+    height: 100px;
     margin: 15px;
-    display: inline-block;
+    background-color: #9956ff
 }
