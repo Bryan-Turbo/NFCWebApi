@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using NFCWebApi.Models;
 using NFCWebApi.Static;
 
 namespace NFCWebApi.Controllers {
@@ -27,8 +28,8 @@ namespace NFCWebApi.Controllers {
         }
 
         [HttpPost("register")]
-        public void PostTag([FromBody] string tagId) {
-            var tag = this.GetSingleTag(tagId.ToUpper());
+        public void PostTag([FromBody] ApiModel tagModel) {
+            var tag = this.GetSingleTag(tagModel.SerialId.ToUpper());
             tag.ToggleOccupation();
             var allTags = Global.Tags;
             var othertags = allTags.Where(t => t.SerialId != tag.SerialId).ToArray();
